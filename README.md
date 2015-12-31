@@ -38,6 +38,12 @@ I may make scripts around the processes later.
   1. Any diffs are expected
   1. Understand why they are there (the latter may be unachievable depending
   on your level of knowledge).
+* Try to only upgrade the minimal set of dependencies at a time (ideally
+  only one), and do them each in a separate commit, including only
+  the necessary changes to `package.json` and `npm-shrinkwrap.json`.
+  If you want to subsequently squash this into the commit that actually
+  uses this dependency, you can, but it's good to keep it isolated at first
+  so you can easily see if it breaks anything in isolation and revert it.
 * (optional, but a good idea) Do not install any packages globally, even on
   development workstations.  Instead do one of the following:
   * On workstations, use [direnv](http://direnv.net/) on
