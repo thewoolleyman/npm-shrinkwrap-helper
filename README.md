@@ -54,7 +54,8 @@ I may make scripts around the processes later.
 ## Creating initial shrinkwrap file
 
 1. Make sure you have no existing `npm-shrinkwrap.json` file.
-1. Make sure you have a clean working copy and no un-pushed commits
+1. Make sure you have a clean working copy and no un-pushed commits, and
+  `node_modules` in your `.gitignore`.
 1. Remove (move and keep a copy for reference) your `node_modules` directory
   from your project.
 1. Run `npm i` (NO global option!) to recreate `node_modules` containing ONLY the
@@ -74,9 +75,34 @@ I may make scripts around the processes later.
 1. One final (third) time, delete `node_modules` and do another `npm i`.
   This time, you should have NO changes.
 
-## Upgrading a package (conservatively)
+## Upgrading or installing a package dependency (conservatively)
 
-1. TODO: ...
+1. Make sure you have a clean working copy and no un-pushed commits, and
+  `node_modules` in your `.gitignore`.
+1. Remove (move and keep a copy for reference) your `node_modules` directory
+  from your project.
+1. Run `npm i` (NO global option!) to recreate `node_modules` containing ONLY the
+  packages specified by your `npm-shrinkwrap.json`
+1. DELETE your `npm-shrinkwrap.json` but DO NOT commit the deletion (you'll)
+  recreate it in a minute)
+1. Make the necessary changes to your `package json` to specify the
+   new/updated dependency.  Only change a single dependency at a time, ideally.
+1. Run `npm i` to install the new/updated dependency in your `node_modules`
+1. Run `npm shrinkwrap --dev`.
+1. Do a diff of the changes to `npm-shrinkwrap.json` compared to the
+  currently-committed version.  The ONLY changes should be expected
+  changes related to your new/updated package.
+1. If they look legit, commit the changees to `npm-shrinkwrap.json`
+  ***BUT DON'T PUSH YET***
+1. Again, remove (or backup) your `node_modules` directory, and do another
+  `npm i`.
+1. Check out the diffs of `npm-shrinkwrap.json`.  You may see
+  differences in the `resolved` entries.
+1. Go ahead and commit (or amend the previous commit, if you want a single
+  commit) this updated version of `npm-shrinkwrap.json`.
+1. Now you should be safe to push your changes, and be confident that
+  future invocations of `npm shrinkwrap --dev` won't introduce any
+  spurious changes to the `resolved` entries.
 
 ## Making an existing shrinkwrap environment have pristine packages
 
