@@ -104,13 +104,7 @@ I may make scripts around the processes later.
   future invocations of `npm shrinkwrap --dev` won't introduce any
   spurious changes to the `resolved` entries.
 
-## Making an existing shrinkwrap environment have pristine packages
-
-1. This is identical to the process above for creating the initial shrinkwrap
-  file, just skip the first step saying to make sure you have no existing
-  shrinkwrap file.
-
-## Installing fresh from shrinkwrap on a new environment
+## Making a new or existing shrinkwrap environment have pristine packages
 
 1. Check out the project.
 1. Delete any existing `node_modules` directory (it should already
