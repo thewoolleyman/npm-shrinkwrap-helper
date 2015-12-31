@@ -24,6 +24,8 @@ to:
   in npm-shrinkwrap.json flapping across commits (depending on whether
   they were installed from scracth or installed based on an existing
   shrinkwrap specification).
+* Managing differences between dev vs. prod environments/deploys, while still
+ being able to use shrinkwrap to lock down dependencies in both cases.
 
 For now, this is just a scratchpad for the process I'm attempting to define.
 I may make scripts around the processes later.
@@ -145,3 +147,20 @@ I'm not positive these are the right things to do.  Feedback is welcome.
 * Or something about network errors
 * In this case, check your network (`ping google.com`), then start whatever
  you were doing from scratch and try again.
+
+# UNANSWERED QUESTIONS
+
+## What about avoiding install of dev-only dependencies in production?
+
+AFAIK, this workflow will result in all dev dependencies being installed in
+production, because when `npm i` installs based off an existing
+`npm-shrinkwrap.json`, it doesn't know or distinguish which ones originally
+came from the devDependencies section in `package.json`.
+[this issue](https://github.com/npm/npm/issues/10863) is related to the
+problem.  For now, I'm assuming that it's safe (although unnecessary and slow)
+to just install everything in production, since npm's architecture specifies
+all sub-dependencies in the dependency tree independently.  For reference,
+see [RubyGems'](http://guides.rubygems.org/) approach, which forces a
+single version of a given package to be used, and
+[Elm's package manager](http://elm-lang.org/blog/announce/package-manager),
+which attempts to maximize sharing.
