@@ -59,6 +59,15 @@ I may make scripts around the processes later.
 
 # USE CASES:
 
+Note: Running `npm prune` may be a much faster alternative
+to deleting/moving the `node_modules` directory
+in the steps below, but I'm not positive it can
+be trusted to have the identical result,
+and not include some extra entries in `npm-shrinkwrap.json`
+that wouldn't be there if you would have
+deleted the directory.  So, the safer but slower
+method is shown.  Feedback is welcome.
+
 ## Creating initial shrinkwrap file
 
 1. Make sure you have no existing `npm-shrinkwrap.json` file.
@@ -76,6 +85,7 @@ I may make scripts around the processes later.
 1. Again, remove (or backup) your `node_modules` directory, and do another
   `npm i`.  This time, it will use your shrinkwrap file to install, instead
   of the package.json.
+1. Then do another `npm shrinkwrap --dev`
 1. Check out the diffs of `npm-shrinkwrap.json`.  You'll probably several
   differences in the `resolved` entries.
 1. Go ahead and commit (or amend the previous commit, if you want a single
