@@ -158,6 +158,23 @@ I'm not positive these are the right things to do.  Feedback is welcome.
 * In this case, check your network (`ping google.com`), then start whatever
  you were doing from scratch and try again.
 
+# OTHER RELATED TOOLS
+
+* Shrinkpack:
+  * [shrinkpack](https://github.com/JamieMason/shrinkpack) lets you check in
+    a copy of all your dependencies.
+  * There's tradeoffs with this approach.  It really blows up your git repo
+    size to check in all third party tools, that's why I stopped using bundle
+    package on Rails projects.  Plus, I get the same build speedups by having
+    my CI system cache my node_modules directory.  And, I still lock down all
+    dependencies via shrinkwrap so I'm not exposed to floating version regressions
+    like he says (or at least they are clear where they came from because I
+    commit my shrinkwrap.json).  But on the third hand, it is nice to have a
+    copy of all your dependencies in case
+    [someone decides to yank them off the central repository](https://medium.com/@azerbike/i-ve-just-liberated-my-modules-9045c06be67c#.b9emltwfr).
+    Not that that could ever happen.
+    [Or break thousands of projects](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)...
+
 # UNANSWERED QUESTIONS
 
 ## What about avoiding install of dev-only dependencies in production?
