@@ -82,6 +82,9 @@ method is shown.  Feedback is welcome.
 1. If you get any errors, especially "extraneous" errors, see the "HANDLING
   ERRORS" section below, then start over.
 1. Commit ***BUT DON'T PUSH YET*** that new shrinkwrap file.
+1. ***UPDATE:***  Recent versions of NPM (>= 3.7 ???) seem to have resolved
+   the "flapping `resolved` entries" problem, so if you never see any changes
+   from the below steps, you can safely skip them and push now.
 1. Again, remove (or backup) your `node_modules` directory, and do another
   `npm i`.  This time, it will use your shrinkwrap file to install, instead
   of the package.json.
@@ -112,6 +115,9 @@ method is shown.  Feedback is welcome.
   changes related to your new/updated package.
 1. If they look legit, commit the changees to `npm-shrinkwrap.json`
   ***BUT DON'T PUSH YET***
+1. ***UPDATE:***  Recent versions of NPM (>= 3.7 ???) seem to have resolved
+   the "flapping `resolved` entries" problem, so if you never see any changes
+   from the below steps, you can safely skip them and push now.
 1. Again, remove (or backup) your `node_modules` directory, and do another
   `npm i`.
 1. Check out the diffs of `npm-shrinkwrap.json`.  You may see
