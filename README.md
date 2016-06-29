@@ -143,15 +143,29 @@ I'm not positive these are the right things to do.  Feedback is welcome.
 ## `npm ERR! extraneous: ...`
 
 * This occurs when you have an "extraneous" dependency not referenced by
-  `package.json`, as described in the [shrinkwrap docs]().  This
+  `package.json`, as described in the
+  [shrinkwrap docs](https://docs.npmjs.com/cli/shrinkwrap).  This
   can occur because you manually installed it, or because of some post install hooks
   [as described in this issue](https://github.com/paulmillr/chokidar/issues/92)
-* The easiest (but perhaps not correct) solution is to simply delete the
-  offending entry out of your node_modules directory with
-  `rm -rf node_modules/packagename`
-* If you didn't manually install the dependency, then you should track down
-  what caused it to be installed (possibly a post-install hook, possibly
-  in one of your dependencies) and stop that from happening.  
+* First, determine if it's a postinstall problem or a manual install problem.
+  If you were carefully following processes above regarding deletion of the 
+  `node_modules` directory at appropriate points, then there should be no
+  chance of having manually installed something.  So, optionally run through
+  the process again carefully, verify you get the same error, then continue
+  on and assume that it's due to a postinstall issue...
+* The root of the problem is that the `npm shrinkwrap` command does not
+  (as of npm <= 3.9) seem to be "aware" of packages that were installed
+  in `node_modules` as a result of a postinstall hook of some dependency.
+  Therefore it will fail with the "extraneous" error whenever it encounters
+  one of these packages it doesn't expect.
+* So, the only workaround I know is to explicitly add the "extraneous"
+  dependenc(ies) as a top-level entry in your `package.json`.  You can pick
+  whatever version constraint is appropriate, and add it to main or dev
+  dependencies as appropriate.  Yes, this is lying and claiming your
+  app has a direct dependency when it actually doesn't, and you'll have to 
+  manually update/delete it if necessary in the future, but until
+  the shrinkwrap command is fixed to handle this situation I don't know
+  of any other workaround.  Please let me know if you have more insight :)
 
 ## Network errors
 
