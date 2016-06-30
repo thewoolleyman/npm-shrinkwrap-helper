@@ -70,6 +70,9 @@ method is shown.  Feedback is welcome.
 
 ## Creating initial shrinkwrap file
 
+1. If at all possible, use a recent version of npm (>= 3.9) - there are
+   relevant bugfixes, most notably fixing flapping `resolved` entries,
+   and it seems better handling of dependencies pointed at git repos.
 1. Make sure you have no existing `npm-shrinkwrap.json` file.
 1. Make sure you have a clean working copy and no un-pushed commits, and
   `node_modules` in your `.gitignore`.
@@ -98,6 +101,9 @@ method is shown.  Feedback is welcome.
 
 ## Upgrading or installing a package dependency (conservatively)
 
+1. If at all possible, use a recent version of npm (>= 3.9) - there are
+   relevant bugfixes, most notably fixing flapping `resolved` entries,
+   and it seems better handling of dependencies pointed at git repos.
 1. Make sure you have a clean working copy and no un-pushed commits, and
   `node_modules` in your `.gitignore`.
 1. Remove (move and keep a copy for reference) your `node_modules` directory
