@@ -112,7 +112,7 @@ method is shown.  Feedback is welcome.
   packages specified by your `npm-shrinkwrap.json`
 1. DELETE your `npm-shrinkwrap.json` but DO NOT commit the deletion (you'll)
   recreate it in a minute)
-1. Make the necessary changes to your `package json` to specify the
+1. Make the necessary changes to your `package.json` to specify the
    new/updated dependency.  Only change a single dependency at a time, ideally.
 1. Run `npm i` to install the new/updated dependency in your `node_modules`
 1. Run `npm shrinkwrap --dev`.
