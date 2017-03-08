@@ -1,3 +1,7 @@
+# UPDATE
+
+[Yarn](https://yarnpkg.com) has changed everything for the better.  Just use it instead of `npm`. Also, coincidentally, around the same time Yarn was released, the link below to NPM's self-acknowledged dependency hell disappeared. It's for the best. The world moves on. Sometimes you get out of hell.
+
 # npm-shrinkwrap-helper
 
 This repo is an attempt to define a process for navigating the
