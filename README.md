@@ -26,7 +26,7 @@ to:
   occur, and how to resolve them.
 * How to resolve the problem of the value of "resolved" entries
   in npm-shrinkwrap.json flapping across commits (depending on whether
-  they were installed from scracth or installed based on an existing
+  they were installed from scratch or installed based on an existing
   shrinkwrap specification).
 * Managing differences between dev vs. prod environments/deploys, while still
  being able to use shrinkwrap to lock down dependencies in both cases.
